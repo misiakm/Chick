@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Chick.ModelsViews.Kalendarz.DatyDniTygodniaPartial>
+
+@{ 
+    Layout = null;
+}
+
+@foreach (var i in Model)
+{
+    <div class="col">
+        @i.Data.ToString("dd.MM")
+    </div>
+}

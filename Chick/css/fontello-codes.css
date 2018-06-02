@@ -1,0 +1,8 @@
+
+.icon-food-1:before { content: '\e800'; } /* '' */
+.icon-user:before { content: '\e801'; } /* '' */
+.icon-group:before { content: '\e802'; } /* '' */
+.icon-mail:before { content: '\e803'; } /* '' */
+.icon-calendar:before { content: '\e804'; } /* '' */
+.icon-food:before { content: '\f0f5'; } /* '' */
+.icon-search:before { content: '\f50d'; } /* '' */

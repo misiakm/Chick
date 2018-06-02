@@ -18,5 +18,7 @@ namespace Chick.Models
 
         [Required]
         public int Posilek { get; set; }
+
+        public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
     }
 }

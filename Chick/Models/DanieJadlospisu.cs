@@ -27,6 +27,8 @@ namespace Chick.Models
 
         public string Opis { get; set; }
 
+        public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
+
         [ForeignKey("DanieJadlospisu")]
         public virtual ICollection<PlanDnia> PlanyDni { get; set; }
 

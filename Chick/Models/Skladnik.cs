@@ -37,6 +37,9 @@ namespace Chick.Models
 
         public int? Kategoria { get; set; }
 
+        public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
+
+
         [ForeignKey("Skladnik")]
         public virtual ICollection<Receptura> Receptury { get; set; }
     }

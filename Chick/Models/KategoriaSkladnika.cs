@@ -16,6 +16,8 @@ namespace Chick.Models
         [Required]
         public string NazwaKategorii { get; set; }
 
+        public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
+
         [ForeignKey("Kategoria")]
         public virtual ICollection<Skladnik> Skladniki { get; set; }
     }

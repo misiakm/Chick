@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Tytul - Chick</title>
+    <link href="~/Content/wspolne.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="~/css/fontello.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+</head>
+<body>
+    <div id="naglowek">
+        @{ 
+            Html.RenderPartial("Naglowek");
+        }
+    </div>
+
+    <div id="leweMenu">
+        @{
+            Html.RenderPartial("LeweMenu");
+        }
+    </div>
+
+    <div id="zawartosc" class="offset-2 col-10 mt-3 h-100 position-fixed text-secondary">
+        @RenderBody()
+    </div>
+
+    <div id="Dialog" class="modal fade" tabindex="-1" role="dialog">
+        @{ 
+
+        }
+    </div>
+
+    <div id="PrawyPanel">
+
+    </div>
+</body>
+</html>

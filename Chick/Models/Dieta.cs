@@ -26,6 +26,10 @@ namespace Chick.Models
 
         public string Opis { get; set; }
 
+        public string Wykluczenia { get; set; }
+
+        public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
+
         [ForeignKey("Dieta")]
         public virtual ICollection<Tydzien> Tygodnie { get; set; }
     }

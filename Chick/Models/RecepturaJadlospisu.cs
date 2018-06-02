@@ -23,5 +23,7 @@ namespace Chick.Models
 
         [Required]
         public int DanieJadlospisu { get; set; }
+
+        public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
     }
 }

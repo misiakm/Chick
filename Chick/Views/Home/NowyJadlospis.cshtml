@@ -1,0 +1,35 @@
+﻿@model Chick.ModelsViews.NowyJadlospis
+
+@{ 
+    Layout = "~/Views/Shared/Dialog.cshtml";
+    ViewBag.TytulModal = "Dodaj dietę";
+    ViewBag.BtnWyslij = "Zapisz";
+    ViewBag.BtnZamknij = "Zamknij";
+    ViewBag.Akcja = "DodajJadlospis";
+    ViewBag.Kontroler = "Home";
+}
+
+<div class="col-12 mb-2">
+    @Html.LabelFor(x => x.Pacjent)
+    @Html.DropDownListFor(x => x.Pacjent, Model.ListaPacjentow, new { @class = "form-control" })
+</div>
+
+<div class="col-12 row mb-2">
+    <div class="col-6">
+        @Html.LabelFor(x => x.DataPoczatkowa)
+        @Html.EditorFor(x => x.DataPoczatkowa, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="col-6">
+        @Html.LabelFor(x => x.IloscTygodni)
+        @Html.EditorFor(x => x.IloscTygodni, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+</div>
+
+<div class="col-12 mb-2">
+    @Html.LabelFor(x => x.Kalorycznosc)
+    @Html.EditorFor(x => x.Kalorycznosc, new { htmlAttributes = new { @class = "form-control" } })
+</div>
+@Html.HiddenFor(x => x.WybranaDataURL)
+
+
+@Html.ActionLink("Przejdź do szczegółów","SzczegolyNowyJadlospis")

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Chick.ModelsViews.Kalendarz.PosilkiPartial>
+
+@{ 
+    Layout = null;
+}
+
+@foreach (var i in Model)
+{
+    <div class="col-12 row" id="Posilek_@i.ID">
+        @{
+            Html.RenderAction("DaniaWPosilku", new { posilek = i.ID , klucz = i.Klucz });
+        }
+    </div>
+}

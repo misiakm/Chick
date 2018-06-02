@@ -1,0 +1,21 @@
+﻿
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">@ViewBag.TytulModal</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @using (Html.BeginForm((string)ViewBag.Akcja, (string)ViewBag.Kontroler)) {
+        
+            <div class="modal-body">
+                @RenderBody()
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@ViewBag.BtnZamknij</button>
+                <button type="submit" class="btn btn-primary">@ViewBag.BtnWyslij</button>
+            </div>
+        }
+    </div>
+</div>

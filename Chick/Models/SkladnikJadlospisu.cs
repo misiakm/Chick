@@ -33,6 +33,8 @@ namespace Chick.Models
         [DefaultValue(0)]
         public decimal Weglowodanych { get; set; }
 
+        public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
+
         [ForeignKey("Skladnik")]
         public virtual ICollection<RecepturaJadlospisu> Receptury { get; set; }
     }

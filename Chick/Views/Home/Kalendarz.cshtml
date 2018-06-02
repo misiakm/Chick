@@ -1,0 +1,19 @@
+﻿
+<input id="datepicker" hidden="hidden" />
+
+<a onclick="pokazKalendarz()">
+    <span class="kartkaKalendarza">
+        @ViewBag.WybranyDzien.Day.ToString()
+    </span>
+</a>
+
+<script>
+    function pokazKalendarz() {
+        $("#datepicker").datepicker();
+        $("#datepicker").datepicker("show");
+    }
+
+    $("body").on("change", "#datepicker", function () {
+        window.location.href = '@Url.Action("Panel","Home")' + '?data=' + $(this).val();
+    })
+</script>

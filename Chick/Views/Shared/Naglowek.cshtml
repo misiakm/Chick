@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="naglowek pt-2 pb-1 shadow">
+    <div class="row">
+        <a class="navbar-brand col-1 row text-center logo">
+            <img src="~/Images/logo.png" height="30" />
+        </a>
+
+        <div class="col-2 row">
+            <input type="text" id="szukaniePacjenta" class="searchBox" placeholder="Szukaj pacjenta..." />
+        </div>
+
+        <div class="text-center col-7 text-white font-weight-bold">@ViewBag.Tytul</div>
+        <div class="col-2 text-right">
+            <a href="#">
+                <i class="icon-user"></i> @ViewBag.uzytkownik
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    var d;
+    $.getJSON("@Url.Action("Klienci","Panel")", function (json) {
+        d = json;
+    })
+
+    $(document).ready(function () {
+        $("#szukaniePacjenta").autocomplete({source: d})
+    })
+</script>

@@ -21,6 +21,8 @@ namespace Chick.Models
 
         public string Opis { get; set; }
 
+        public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
+
         [ForeignKey("Dzien")]
         public virtual ICollection<PlanDnia> PlanDnia { get; set; }
     }

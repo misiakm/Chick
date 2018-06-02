@@ -25,5 +25,7 @@ namespace Chick.Models
         [Required]
         [DefaultValue(100)]
         public int Waga { get; set; }
+
+        public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
     }
 }

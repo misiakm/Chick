@@ -16,6 +16,8 @@ namespace Chick.Models
         [Required]
         public string Status { get; set; }
 
+        public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
+
         [ForeignKey("Status")]
         public virtual ICollection<Pacjent> Pacjenci { get; set; }
     }

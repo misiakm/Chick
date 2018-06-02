@@ -47,6 +47,8 @@ namespace Chick.Models
 
         public DateTime DataDodania { get; set; } = DateTime.Now;
 
+        public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
+
         [ForeignKey("Dietetyk")]
         public virtual ICollection<Uzytkownik> Dietetycy { get; set; }
 

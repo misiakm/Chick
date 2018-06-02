@@ -1,0 +1,25 @@
+﻿body {
+    background: url('../Images/tic-tac-toe.png') repeat;
+
+}
+
+.login-form {
+    background: #f8f8f8;
+}
+
+.pomarancz {
+    background: #ff9800!important;
+    color:white;
+}
+
+    .pomarancz:hover {
+        background: #ff7d00!important;
+    }
+
+a {
+    color: #ff7d00;
+}
+
+    a:hover {
+        color: #ff4600;
+    }

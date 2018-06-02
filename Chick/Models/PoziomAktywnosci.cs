@@ -19,6 +19,8 @@ namespace Chick.Models
         [Required]
         public decimal Wspolczynnik { get; set; }
 
+        public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
+
         [ForeignKey("PoziomAktywnosciFizycznej")]
         public virtual ICollection<Pomiar> Pomiary { get; set; }
     }

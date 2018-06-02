@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Chick.ModelsViews.JadlospisyPage>
+
+@{ 
+    Layout = null;
+}
+
+@foreach (var i in Model)
+{
+    <a href="@Url.Action("Tydzien","Home", new { data = ViewBag.WybranyDzien, klucz = i.Klucz })" role="button">
+        <div class="border-bottom col-12 wiersz">
+            <div class="row col-12">
+                <div class="col-10 font-weight-bold">
+                    @i.Imie @i.Nazwisko (@i.Kalorycznosc)
+                </div>
+                <div class="col-1 text-right">
+                    @(i.OstatniUlozonyDzien != null ? i.OstatniUlozonyDzien.Value.ToString("d MMM") : " - ")
+                </div>
+                <div class="col-1 text-right">
+                    @i.DataKoncaDiety.ToString("d MMM")
+                </div>
+            </div>
+            <div class="row col-12">
+                @(i.Opis != null ? i.Opis : " - ")
+            </div>
+        </div>
+    </a>
+}

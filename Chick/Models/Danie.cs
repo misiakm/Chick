@@ -25,6 +25,8 @@ namespace Chick.Models
 
         public int? Kategoria { get; set; }
 
+        public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
+
         [ForeignKey("Danie")]
         public virtual ICollection<PrzeznaczenieDania> PrzeznaczonePosilki { get; set; }
     }

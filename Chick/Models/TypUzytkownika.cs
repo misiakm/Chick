@@ -19,6 +19,8 @@ namespace Chick.Models
         [DefaultValue(false)]
         public bool Usuniety { get; set; }
 
+        public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
+
         [ForeignKey("Typ")]
         public virtual ICollection<Uzytkownik> Uzytkownicy { get; set; }
     }

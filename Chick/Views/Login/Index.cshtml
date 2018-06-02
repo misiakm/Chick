@@ -1,0 +1,48 @@
+﻿@model Chick.ModelsViews.LoginPage
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/logowanie.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="col-md-4 mx-auto border shadow mt-5 rounded login-form">
+        @using (Html.BeginForm())
+        {
+            <img src="~/Images/logoPoziome.png" class="col-md-6 offset-3 mt-2" />
+            <div class="col-md-12 mt-3">
+                <div class="row">
+                    @Html.LabelFor(x => x.Email)
+                    @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="row">
+                    @Html.ValidationMessageFor(x => x.Email)
+                </div>
+                <div class="row mt-2">
+                    @Html.LabelFor(x => x.Password)
+                    @Html.EditorFor(x => x.Password, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                @Html.ValidationMessageFor(x => x.Password)
+            </div>
+            if (ViewBag.Err != null)
+            {
+                <div class="text-danger mt-2 mb-2">
+                    @ViewBag.Err
+                </div>
+            }
+            <input type="submit" value="Zaloguj" class="btn  pomarancz mt-3 mb-2 col-md-12" />
+            <div class="col-md-12 text-center mb-3">
+                Nie masz jeszcze konta? <a href="#"> Zarejestruj się</a> lub <a href="#">Poczytaj o funkcjonalnościach</a>
+            </div>
+        }
+    </div>
+</body>
+</html>

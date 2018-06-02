@@ -1,0 +1,33 @@
+﻿<div class="col-12 row">
+    <div class="col">
+        Poniedziałek
+    </div>
+    <div class="col">
+        Wtorek
+    </div>
+    <div class="col">
+        Środa
+    </div>
+    <div class="col">
+        Czwartek
+    </div>
+    <div class="col">
+        Piątek
+    </div>
+    <div class="col">
+        Sobota
+    </div>
+    <div class="col">
+        Niedziela
+    </div>
+</div>
+
+<div class="col-12 row" id="DateDniTygodnia">
+    @{ 
+        Html.RenderAction("DatyDniTygodnia", new { data = ViewBag.WybranyDzien });
+    }
+</div>
+
+@{ 
+    Html.RenderAction("Posilki","Home");
+}

@@ -36,6 +36,8 @@ namespace Chick.Models
 
         public int PoziomAktywnosciFizycznej { get; set; }
 
+        public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
+
         [DefaultValue(false)]
         [Required]
         public bool Usuniety { get; set; }

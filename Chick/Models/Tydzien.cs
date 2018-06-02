@@ -33,6 +33,8 @@ namespace Chick.Models
         [DefaultValue(0.50)]
         public decimal Weglowodany { get; set; }
 
+        public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
+
         [ForeignKey("Tydzien")]
         public virtual ICollection<Dzien> Dni { get; set; }
     }

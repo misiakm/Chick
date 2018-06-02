@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Tytul = "Panel";
+}
+@*<a fref="#" class="btn PrawyDolny shadow">
+    +
+</a>*@
+
+@Ajax.ActionLink("+", "NowyJadlospis", "Home", new { wybranaData = ViewBag.WybranyDzien }, new AjaxOptions {UpdateTargetId = "Dialog", OnSuccess = "$('#Dialog').modal();"}, new { @class= "btn PrawyDolny shadow mdl-js-ripple-effect" })
+
+<div class="przyciski">
+    <div class="float-left">
+        <a class="d-inline btn btn-outline-dark mr-2 h-25" href="#" role="button">
+            Jadłospisy
+        </a>
+
+        <a class="d-inline btn btn-outline-dark mr-2" href="#" role="button">
+            Szablony
+        </a>
+
+        <input type="text" id="szukaniePacjenta" class="searchBox mr-2" placeholder="Szukaj..." />
+    </div>
+    <div class="float-right mt-1">
+        <a class="d-inline text-black-50 font-weight-bold mr-4" href="#">Imię &#8593;</a>
+
+        <a class="d-inline text-black-50 mr-4" href="#">Nazwisko</a>
+
+        <a class="d-inline text-black-50 mr-4" href="#">Ostatni ułożony dzień</a>
+
+        <a class="d-inline text-black-50 mr-4" href="#">Data końca diety</a>
+
+        <span id="kalendarz">
+            @{ Html.RenderAction("Kalendarz", "Home", new { data = ViewBag.WybranyDzien });}
+        </span>
+    </div>
+    <div class="clearfix"></div>
+    <div class="content mt-3 border shadow position-fixed" id="jadlospisy">
+
+        @{ 
+            Html.RenderAction("Jadlospisy");
+        }
+
+        @*<a href="#" role="button">
+            <div class="border-bottom col-12 wiersz">
+                <div class="row col-12">
+                    <div class="col-10 font-weight-bold">
+                        Artur Nowak (2000 kcal)
+                    </div>
+                    <div class="col-1 text-right">
+                        10 Maj
+                    </div>
+                    <div class="col-1 text-right">
+                        27 Cze
+                    </div>
+                </div>
+                <div class="row col-12">
+                    Dieta wegetariańska bezglutenowa.
+                </div>
+            </div>
+        </a>
+
+        <a href="#" role="button">
+            <div class="border-bottom col-12 wiersz">
+                <div class="row col-12">
+                    <div class="col-10 font-weight-bold">
+                        Artur Nowak (2000 kcal)
+                    </div>
+                    <div class="col-1 text-right">
+                        10 Maj
+                    </div>
+                    <div class="col-1 text-right">
+                        27 Cze
+                    </div>
+                </div>
+                <div class="row col-12">
+                    Dieta wegetariańska bezglutenowa.
+                </div>
+            </div>
+        </a>
+
+        <a href="#" role="button">
+            <div class="border-bottom col-12 wiersz">
+                <div class="row col-12">
+                    <div class="col-10 font-weight-bold">
+                        Artur Nowak (2000 kcal)
+                    </div>
+                    <div class="col-1 text-right">
+                        10 Maj
+                    </div>
+                    <div class="col-1 text-right">
+                        27 Cze
+                    </div>
+                </div>
+                <div class="row col-12">
+                    Dieta wegetariańska bezglutenowa.
+                </div>
+            </div>
+        </a>*@
+
+    </div>
+</div>
+
+

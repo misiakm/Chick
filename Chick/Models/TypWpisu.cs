@@ -16,6 +16,8 @@ namespace Chick.Models
         [Required]
         public string Typ { get; set; }
 
+        public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
+
         [ForeignKey("TypWpisu")]
         public virtual ICollection<DanieJadlospisu> DaniaJadlospisu { get; set; }
     }
