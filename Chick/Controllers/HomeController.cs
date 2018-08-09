@@ -1,5 +1,6 @@
 ﻿using Chick.Logika;
 using Chick.Models;
+using Chick.Models.Widoki;
 using Chick.ModelsViews;
 using Chick.ModelsViews.Kalendarz;
 using System;
@@ -14,6 +15,7 @@ namespace Chick.Controllers
     {
         Widoki widoki = new Widoki();
         ChickDbContext db = new ChickDbContext();
+        PanelController _panel = new PanelController();
 
         public ActionResult Panel(DateTime? data)
         {
@@ -56,6 +58,8 @@ namespace Chick.Controllers
 
         public ActionResult Tydzien(DateTime data, string klucz)
         {
+            JadlospisyPage jadlospisy = widoki.Jadlospisy.Where(x => x.KluczDiety == klucz).Select(x => new JadlospisyPage() { Imie = x.Imie, Nazwisko = x.Nazwisko, Kalorycznosc = x.Kalorycznosc, Klucz = x.KluczDiety}).FirstOrDefault();
+            ViewBag.Tytul = jadlospisy.Imie + " " + jadlospisy.Nazwisko + " (" + jadlospisy.Kalorycznosc + ")";
             ViewBag.WybranyDzien = data;
             return View();
         }
@@ -67,21 +71,29 @@ namespace Chick.Controllers
             return PartialView(datyDniTygodnia);
         }
 
-        public ActionResult Posilki(string klucz)
+        public ActionResult Posilki(string klucz, DateTime data)
         {
+            Kalendarz k = new Kalendarz();
+            DateTime dataStart = k.PobierzPierwszyDzienTygodnia(data);
+            DateTime dataStop = k.PobierzOstatniDzienTygodnia(data);
             var q = db.Posilki.Select(x => new PosilkiPartial() {
                         ID = x.ID,
                         NazwaPosilku = x.NazwaPosilku,
-                        Klucz = klucz
+                        Klucz = klucz,
+                        DataStart = dataStart,
+                        DataStop = dataStop
                     }).ToList();
             return PartialView(q);
         }
 
-        public ActionResult DaniaWPosilku(int Posilek, string Klucz)
+        public ActionResult DaniaWPosilku(int Posilek, string Klucz, DateTime data)
         {
-
-            return PartialView();
+            Kalendarz k = new Kalendarz();
+            List<DaniaWPosilkuPartial> q = k.PobierzDaniaWPosilku(Posilek, Klucz, data);        
+            return PartialView(q);
         }
+
+     
 
         public ActionResult NowyJadlospis(DateTime wybranaData)
         {
@@ -92,7 +104,10 @@ namespace Chick.Controllers
                 ListaPacjentow = new List<SelectListItem>(),
                 WybranaDataURL = wybranaData
             };
-            nowyJadlospis.ListaPacjentow = db.Pacjenci.Select(x => new SelectListItem { Value = x.ID.ToString(), Text = x.Imie + " " + x.Nazwisko }).ToList();
+            int? dietetyk = UzytkownikAkcje.PobierzIDUzytkownikaZCookie();
+            nowyJadlospis.ListaPacjentow = db.Pacjenci.Where(x => x.Dietetyk == dietetyk)
+                .Select(x => new SelectListItem { Value = x.ID.ToString(), Text = x.Imie + " " + x.Nazwisko }).ToList();
+
             return PartialView(nowyJadlospis);
         }
 
@@ -106,5 +121,7 @@ namespace Chick.Controllers
             
             return RedirectToAction("Panel",new {data = nowyJadlospis.WybranaDataURL });
         }
+
+        
     }
 }

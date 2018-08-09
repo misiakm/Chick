@@ -36,6 +36,7 @@ namespace Chick.Models
 
         public int PoziomAktywnosciFizycznej { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
 
         [DefaultValue(false)]

@@ -14,11 +14,13 @@ namespace Chick.Models
         [Key]
         public int ID { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Typ { get; set; }
 
         [DefaultValue(false)]
         public bool Usuniety { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
 
         [ForeignKey("Typ")]

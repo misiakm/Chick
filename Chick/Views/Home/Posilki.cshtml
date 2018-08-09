@@ -6,9 +6,10 @@
 
 @foreach (var i in Model)
 {
-    <div class="col-12 row" id="Posilek_@i.ID">
-        @{
-            Html.RenderAction("DaniaWPosilku", new { posilek = i.ID , klucz = i.Klucz });
+    <div class="kalendarzWiersz row m-0" id="Posilek_@i.ID">
+        @for (DateTime data = i.DataStart; data <= i.DataStop; data = data.AddDays(1))
+        {
+            Html.RenderAction("DaniaWPosilku", new { posilek = i.ID, klucz = i.Klucz, data = data });
         }
     </div>
 }

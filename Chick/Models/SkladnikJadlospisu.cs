@@ -15,6 +15,7 @@ namespace Chick.Models
         public int ID { get; set; }
 
         [Required]
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string NazwaSkladnika { get; set; }
 
         [Required]
@@ -31,8 +32,9 @@ namespace Chick.Models
 
         [Required]
         [DefaultValue(0)]
-        public decimal Weglowodanych { get; set; }
+        public decimal Weglowodany { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
 
         [ForeignKey("Skladnik")]

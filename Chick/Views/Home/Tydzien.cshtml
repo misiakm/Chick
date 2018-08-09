@@ -1,33 +1,42 @@
-﻿<div class="col-12 row">
-    <div class="col">
+﻿@model Chick.ModelsViews.JadlospisyPage
+
+<script>
+    $("#naglowekNapis").text('@ViewBag.Tytul');
+</script>
+
+<div class="col-12 row text-center">
+    <div class="col dzienTygodnia">
         Poniedziałek
     </div>
-    <div class="col">
+    <div class="col dzienTygodnia">
         Wtorek
     </div>
-    <div class="col">
+    <div class="col dzienTygodnia">
         Środa
     </div>
-    <div class="col">
+    <div class="col dzienTygodnia">
         Czwartek
     </div>
-    <div class="col">
+    <div class="col dzienTygodnia">
         Piątek
     </div>
-    <div class="col">
+    <div class="col dzienTygodnia">
         Sobota
     </div>
-    <div class="col">
+    <div class="col dzienTygodnia">
         Niedziela
     </div>
 </div>
 
-<div class="col-12 row" id="DateDniTygodnia">
+<div class="col-12 row text-center" id="DateDniTygodnia">
     @{ 
         Html.RenderAction("DatyDniTygodnia", new { data = ViewBag.WybranyDzien });
     }
 </div>
 
-@{ 
-    Html.RenderAction("Posilki","Home");
-}
+
+<div id="Tydzien" class="content mt-3 border shadow position-fixed kalendarzContent">
+    @{
+        Html.RenderAction("Posilki", "Home");
+    }
+</div>

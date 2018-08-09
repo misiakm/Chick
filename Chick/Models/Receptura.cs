@@ -20,12 +20,14 @@ namespace Chick.Models
         [Required]
         public int Danie { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Opis { get; set; }
 
         [Required]
         [DefaultValue(100)]
         public int Waga { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
     }
 }

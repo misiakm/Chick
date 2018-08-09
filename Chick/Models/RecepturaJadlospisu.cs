@@ -24,6 +24,7 @@ namespace Chick.Models
         [Required]
         public int DanieJadlospisu { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
     }
 }

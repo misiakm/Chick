@@ -13,17 +13,18 @@
     <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
     <div id="naglowek">
         @{ 
-            Html.RenderPartial("Naglowek");
+            Html.RenderAction("Naglowek", "Panel");
         }
     </div>
 
     <div id="leweMenu">
         @{
-            Html.RenderPartial("LeweMenu");
+            Html.RenderAction("LeweMenu","Panel");
         }
     </div>
 

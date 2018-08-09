@@ -14,6 +14,7 @@ namespace Chick.Models
         public int ID { get; set; }
 
         [Required]
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string NazwaPlci { get; set; }
 
         [ForeignKey("Plec")]

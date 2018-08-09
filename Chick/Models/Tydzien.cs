@@ -33,6 +33,7 @@ namespace Chick.Models
         [DefaultValue(0.50)]
         public decimal Weglowodany { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
 
         [ForeignKey("Tydzien")]

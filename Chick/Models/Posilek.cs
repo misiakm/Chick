@@ -14,8 +14,10 @@ namespace Chick.Models
         public int ID { get; set; }
 
         [Required]
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string NazwaPosilku { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
 
         [ForeignKey("Posilek")]

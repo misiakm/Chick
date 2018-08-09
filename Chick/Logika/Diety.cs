@@ -18,32 +18,36 @@ namespace Chick.Logika
                 Pacjent = pacjent,
                 DataPoczatkowa = dataPoczatkowa,
                 IloscTygodni = iloscTygodni,
-                DataKoncowa = dataPoczatkowa.AddDays(iloscTygodni * 7)
+                DataKoncowa = dataPoczatkowa.AddDays(iloscTygodni * 7).AddDays(-1)
             };
             db.Entry(dieta).State = EntityState.Added;
             db.SaveChanges();
-            DodajTygodnie(dataPoczatkowa, iloscTygodni, kalorycznosc, dieta);
+            DodajTygodnie(kalorycznosc, dieta);
             
         }
 
-        private void DodajTygodnie(DateTime dataPoczatkowa, int iloscTygodni, int kalorycznosc, Dieta dieta)
+        private void DodajTygodnie(int kalorycznosc, Dieta dieta)
         {
-            for (int i = 1; i <= iloscTygodni; i++)
+            Kalendarz k = new Kalendarz();
+            int i = 0;
+            for (DateTime data = k.PobierzPierwszyDzienTygodnia(dieta.DataPoczatkowa); data <= dieta.DataKoncowa; data = data.AddDays(7))
             {
                 Tydzien tydzien = new Tydzien()
                 {
                     Kalorycznosc = kalorycznosc,
                     Dieta = dieta.ID
                 };
-                db.Entry(tydzien).State = EntityState.Added;
+                db.Tygodnie.Add(tydzien);
                 db.SaveChanges();
-                DodajDni(dataPoczatkowa, i, tydzien);
+                DateTime dataDoPrzekazaniaPoczatkowa = dieta.DataPoczatkowa > data ? dieta.DataPoczatkowa : data;
+                DateTime dataDoPrzekazaniaKoncowa = dieta.DataKoncowa > k.PobierzOstatniDzienTygodnia(dataDoPrzekazaniaPoczatkowa) ? k.PobierzOstatniDzienTygodnia(dataDoPrzekazaniaPoczatkowa) : dieta.DataKoncowa;
+                DodajDni(dataDoPrzekazaniaPoczatkowa, ++i, tydzien, dataDoPrzekazaniaKoncowa);
             }
         }
 
-        private void DodajDni(DateTime dataPoczatkowa, int i, Tydzien tydzien)
+        private void DodajDni(DateTime dataPoczatkowa, int i, Tydzien tydzien, DateTime dataKoncowa)
         {
-            for (DateTime data = dataPoczatkowa.AddDays((i - 1) * 7); data < dataPoczatkowa.AddDays(i * 7); data = data.AddDays(1))
+            for (DateTime data = dataPoczatkowa; data <= dataKoncowa; data = data.AddDays(1))
             {
                 Dzien dzien = new Dzien()
                 {

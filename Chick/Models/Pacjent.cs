@@ -14,16 +14,21 @@ namespace Chick.Models
         [Key]
         public int ID { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Imie { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Nazwisko { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Opis { get; set; }
 
         [DataType(DataType.EmailAddress)]
         [EmailAddress]
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Email { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         [DataType(DataType.PhoneNumber)]
         [Phone]
         public string NrTelefonu { get; set; }
@@ -43,6 +48,7 @@ namespace Chick.Models
 
         public DateTime DataDodania { get; set; } = DateTime.Now;
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
 
         [ForeignKey("Pacjent")]

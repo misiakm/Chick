@@ -19,8 +19,10 @@ namespace Chick.Models
         [Required]
         public int Tydzien { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Opis { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
 
         [ForeignKey("Dzien")]

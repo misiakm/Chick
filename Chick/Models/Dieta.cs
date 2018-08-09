@@ -24,10 +24,13 @@ namespace Chick.Models
         [Required]
         public int Pacjent { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Opis { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Wykluczenia { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
 
         [ForeignKey("Dieta")]

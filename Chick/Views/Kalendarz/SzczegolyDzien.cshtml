@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Chick.ModelsViews.Kalendarz.WidokTygodnia.PosilkiDzienPartial>
+
+@{
+    ViewBag.Title = "SzczegolyDzien";
+}
+
+@foreach (var i in Model)
+{
+    @i.DataStart;
+
+    foreach (var j in i.DaniaWPosilku)
+    {
+        @j.NazwaDania
+    }
+
+}

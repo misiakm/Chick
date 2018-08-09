@@ -1,6 +1,45 @@
-﻿
-@{ 
+﻿@model IEnumerable<Chick.ModelsViews.Kalendarz.DaniaWPosilkuPartial>
+
+@{
     Layout = null;
 }
 
-aaa
+@if (Model.Count() == 0)
+{
+    <div class="col kalendarzBlok border-bottom border-right m-0">
+        Brak diety na ten dzień
+    </div>
+}
+else
+{
+    <div class="col kalendarzBlok border-bottom border-right m-0">
+        @foreach (var i in Model)
+        {
+
+            if (i.ID != null)
+            {
+                <div class="border mb-1 border-radius-4 m-pointer">
+                    <div class="col-12 blokDaniaKalendarz">
+                        @i.Godzina.Value.ToString("HH:mm") - @i.NazwaDania
+                    </div>
+                    <div class="row text-center m-0 p-0">
+                        <div class="col-3 d-inline row p-0 m-0">
+                            K: @i.Kalorycznosc
+                        </div>
+                        <div class="col-3 d-inline row p-0 m-0">
+                            B: @i.Bialka
+                        </div>
+                        <div class="col-3 d-inline row p-0 m-0">
+                            W: @i.Weglowodany
+                        </div>
+                        <div class="col-3 d-inline row p-0 m-0">
+                            T: @i.Tluszcze
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        @Ajax.ActionLink("+ Dodaj", "DodajDanie", "Kalendarz", new { }, new AjaxOptions { UpdateTargetId = "Dialog", OnSuccess = "$('#Dialog').modal();" }, new { @class = "kalendarzDodajPrzycisk" })
+        @Html.ActionLink("Szczegoly","SzczegolyDzien","Kalendarz",new {data = Model.First().Data, kluczDiety = Model.First().KluczDiety, kluczDnia = Model.First().KluczDnia },new { @class="przyciskSzczegoly" })
+    </div>
+}

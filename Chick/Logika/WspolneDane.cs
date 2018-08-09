@@ -9,7 +9,7 @@ namespace WD
     {
         public static string GenerujKlucz()
         {
-            return Membership.GeneratePassword(20, 0) + DateTime.Now.ToString("yyyyMMdd_hhmmss");
+            return Membership.GeneratePassword(20, 0).Replace('%','A').Replace('&','B') + DateTime.Now.ToString("yyyyMMdd_hhmmss");
         }
     }
 }

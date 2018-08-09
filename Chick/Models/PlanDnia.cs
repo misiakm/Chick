@@ -22,6 +22,10 @@ namespace Chick.Models
         [Required]
         public int Posilek { get; set; }
 
+        [DataType(DataType.Time)]
+        public DateTime? Godzina { get; set; }
+
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
     }
 }

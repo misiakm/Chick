@@ -13,5 +13,9 @@ namespace Chick.ModelsViews.Kalendarz
         public string NazwaPosilku { get; set; }
 
         public string Klucz { get; set; }
+
+        public DateTime DataStart { get; set; }
+
+        public DateTime DataStop { get; set; }
     }
 }

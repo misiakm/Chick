@@ -15,18 +15,17 @@ namespace Chick.Models
         public int ID { get; set; }
 
         [Required]
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string NazwaDania { get; set; }
-
-        [Required]
-        [DefaultValue(100)]
-        public int Waga { get; set; }
 
         [Required]
         [DefaultValue(0)]
         public int TypWpisu { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Opis { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
 
         [ForeignKey("DanieJadlospisu")]

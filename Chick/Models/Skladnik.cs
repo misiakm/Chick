@@ -15,6 +15,7 @@ namespace Chick.Models
         public int ID { get; set; }
 
         [Required]
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string NazwaSkladnika { get; set; }
 
         [Required]
@@ -37,6 +38,7 @@ namespace Chick.Models
 
         public int? Kategoria { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
 
 

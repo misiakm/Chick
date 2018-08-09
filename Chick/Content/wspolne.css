@@ -6,6 +6,11 @@
     overflow-y: hidden;
     overflow-x: hidden;
     font-family: 'Roboto', sans-serif!important;
+    height: 100%;
+}
+
+html {
+    height: 100%;
 }
 
 .display-5 {
@@ -77,12 +82,24 @@
         border: solid #000000 1px;
     }
 
+
+.jadlospisyContent {
+    height: calc(100% - 109px);
+    bottom: 0px;
+}
+
+.kalendarzContent {
+    height: calc(100% - 170px);
+    bottom: 70px;
+    overflow-y: auto!important;
+}
+
+
 .content {
     border-radius: 4px;
-    bottom: 0px;
-    height: calc(100% - 109px);
     width: 82%;
 }
+
 
     .content .wiersz:hover {
         background: #ebebeb
@@ -124,4 +141,107 @@
     font-size:40px !important;
     color:black!important;
     cursor: pointer !important;
+}
+
+.dzienTygodnia {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.dataDzienTygodnia {
+    font-size: 11px;
+    color: #fe4949;
+}
+
+.border-radius-4 {
+    border-radius: 4px;
+}
+
+.kalendarzBlok {
+    font-size: 11px;
+    padding: 5px;
+    display: block;
+}
+
+    .kalendarzBlok:hover .przyciskSzczegoly {
+        display: block;
+    }
+
+.kalendarzWiersz {
+    min-height: 16.666666% !important;
+}
+
+.przyciskiDialog {
+    margin: -16px;
+    display: block;
+    padding: 5px;
+    background-color: #ff9800;
+}
+
+    .przyciskiDialog a {
+        color: white !important;
+        text-decoration: none;
+        display: block;
+        border-radius: 12px;
+        margin: auto 5px;
+    }
+
+        .przyciskiDialog a:hover, .przyciskiDialog .aktywny {
+            background-color: #ffb649;
+            text-decoration: none;
+            color: aliceblue;
+        }
+
+.daniaDialog {
+    overflow-y: auto;
+}
+
+    .daniaDialog a {
+        color: black;
+    }
+
+        .daniaDialog a:hover {
+            text-decoration: none;
+            background-color: #ebebeb;
+            color: black;
+            
+        }
+    
+.modal-moj {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.kalendarzDodajPrzycisk {
+    display: block;
+    padding: 3px 5px;
+    background: #ff9800;
+    color: white!important;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.kalendarzDodajPrzycisk:hover {
+    background-color: #ce7b00;
+}
+
+.hover:hover {
+    background-color: #ebebeb;
+}
+
+.m-pointer{
+    cursor: pointer;
+}
+
+.przyciskSzczegoly {
+    width: 50px;
+    display: none;
+    height: 15px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.blokDaniaKalendarz {
+    background-color: #e9eaea!important;
 }

@@ -13,8 +13,10 @@ namespace Chick.Models
         [Key]
         public int ID { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string NazwaKategorii { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
         public string Klucz { get; set; } = WD.WspolneDane.GenerujKlucz();
 
         [ForeignKey("Kategoria")]

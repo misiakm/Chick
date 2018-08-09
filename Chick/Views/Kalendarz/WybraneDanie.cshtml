@@ -1,0 +1,61 @@
+﻿@model Chick.ModelsViews.Kalendarz.WyborDania
+
+@{
+    Layout = "~/Views/Shared/Dialog.cshtml";
+    ViewBag.TytulModal = Model.NazwaDania;
+}
+
+<div class="row">
+    <div class="col-6" id="wykresSkladniki" style="height: 200px;">
+        Tu będzie wykres
+    </div>
+    <div class="col-6">
+        <div class="row">
+            @Html.LabelFor(x => x.Waga)
+            @Html.EditorFor(x => x.Waga, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+        <div class="row">
+            <div class="col">
+                Kaloryczność @Html.DisplayFor(x => x.Kalorycznosc)
+            </div>
+            <div class="col">
+                Białko @Html.DisplayFor(x => x.Bialko)
+            </div>
+            <div class="col">
+                Tłuszcz @Html.DisplayFor(x => x.Tluszcze)
+            </div>
+            <div class="col">
+
+                Węgl @Html.DisplayFor(x => x.Weglowodany)
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    google.charts.load("current", { packages: ["corechart"] });
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Language', 'Speakers (in millions)'],
+            ['Białko', @Model.Bialko.ToString().Replace(',','.')],
+            ['Tłuszcz', @Model.Tluszcze.ToString().Replace(',', '.')],
+            ['Węgl', @Model.Weglowodany.ToString().Replace(',', '.')]
+        ]);
+
+        var options = {
+            legend: 'none',
+            pieSliceText: 'label',
+            pieStartAngle: 100,
+            tooltip: { trigger: 'none' },
+            slices: {
+                0: { color: '#2196f3' },
+                1: { color: '#a59d52' },
+                2: { color: '#795548'}
+            }
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('wykresSkladniki'));
+        chart.draw(data, options);
+    }
+</script>

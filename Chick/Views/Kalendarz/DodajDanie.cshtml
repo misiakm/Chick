@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Chick.ModelsViews.Kalendarz.WyborDania>
+
+@{ 
+    Layout = "~/Views/Shared/Dialog.cshtml";
+    ViewBag.TytulModal = "Dodaj danie do jadłospisu";
+}
+
+<div class="naglowekDialog">
+    <div class="text-center przyciskiDialog mb-1">
+        <a class="d-inline-block row mr-2 col-3 aktywny" href="#" role="button">
+            Wszystkie
+        </a>
+
+        <a class="d-inline-block row mr-2 col-3" href="#" role="button">
+            Ostatnie
+        </a>
+
+        <a class="d-inline-block row mr-2 col-3" href="#" role="button">
+            Moje
+        </a>
+    </div>
+
+
+    <input type="text" id="searchTextBox" class="searchBox d-inline mt-3 col-12 mb-2" placeholder="Wpisz nazwę dania..." onkeydown="filtruj()" />
+</div>
+
+<div class="daniaDialog" id="listaDan">
+    @*@foreach (var i in Model)
+    {
+    <a href="@Url.Action("WybraneDanie", "Kalendarz", new { ID = i.Klucz })" data-ajax="true" data-ajax-update="#Dialog" data-ajax-mode="replace" class="danie col-12 border-bottom pt-1 pr-3 pl-3 wiersz d-block">
+        <div class="col-12 row">
+            @i.NazwaDania
+        </div>
+
+        <div class="col-12 row text-center">
+            <div class="col-3">
+                K: @i.Kalorycznosc
+            </div>
+
+            <div class="col-3">
+                B: @i.Bialko
+            </div>
+
+            <div class="col-3">
+                T: @i.Tluszcze
+            </div>
+
+            <div class="col-3">
+                W: @i.Weglowodany
+            </div>
+        </div>
+    </a>
+    }*@
+</div>
+
+<script>
+    pokazDane('');
+
+    function pokazDane(kryteria, zeruj) {
+        $.ajax({
+        url: '@Url.Action("ListaDan","Kalendarz",new { strona = 1})&k=' + kryteria
+        }).done(function (data) {
+            if (zeruj != '') {
+                $("#listaDan").html("");
+            }
+            $(data).each(function (index, obj) {
+                $("#listaDan").append(
+                    '<a href="@Url.Action("WybraneDanie", "Kalendarz")/' + obj.Klucz + '" data-ajax="true" data-ajax-update="#Dialog" data-ajax-mode="replace" class="danie col-12 border-bottom pt-1 pr-3 pl-3 wiersz d-block">' +
+                        '<div class="col-12 row">' + 
+                            obj.NazwaDania +
+                        '</div>' +
+
+                        '<div class="col-12 row text-center">' +
+                            '<div class="col-3">' +
+                                'K: ' + obj.Kalorycznosc +
+                            '</div>' +
+                        '</div>' +
+                    '</a>'
+                )
+            })
+        })
+    }
+
+    $("#searchTextBox").keyup(function () {
+        pokazDane($(this).val(), true);
+    });
+</script>
